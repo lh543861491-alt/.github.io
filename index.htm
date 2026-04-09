@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电商设计师 | 亚马逊风格作品集</title>
+  <!-- 引入图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* 全局基础样式 - 亚马逊极简风格 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    :root {
+      --amazon-dark: #131921;
+      --amazon-blue: #232F3E;
+      --amazon-orange: #FF9900;
+      --amazon-gray: #F3F3F3;
+      --amazon-light: #FAFAFA;
+      --text-dark: #0F1111;
+      --text-gray: #565959;
+      --white: #FFFFFF;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      background-color: var(--amazon-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--amazon-dark);
+      font-size: 28px;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background-color: var(--amazon-orange);
+      display: block;
+      margin: 12px auto 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--amazon-orange);
+      color: var(--white);
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn:hover {
+      background-color: #e68a00;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--amazon-blue);
+      color: var(--amazon-blue);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--amazon-blue);
+      color: var(--white);
+    }
+
+    /* 导航栏 - 亚马逊顶部导航风格 */
+    nav {
+      background-color: var(--amazon-dark);
+      color: var(--white);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      color: var(--amazon-orange);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-menu a {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--amazon-orange);
+    }
+
+    .mobile-menu {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    /* 英雄区 - 简洁大气 */
+    .hero {
+      margin-top: 60px;
+      background-color: var(--amazon-gray);
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 42px;
+      color: var(--amazon-dark);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: var(--text-gray);
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* 作品集区域 - 亚马逊商品卡片式布局 */
+    .portfolio {
+      background-color: var(--white);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .portfolio-card {
+      background-color: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background-color: var(--amazon-gray);
+    }
+
+    .card-info {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--amazon-dark);
+      margin-bottom: 8px;
+    }
+
+    .card-category {
+      font-size: 13px;
+      color: var(--amazon-orange);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    /* 关于我区域 */
+    .about {
+      background-color: var(--amazon-gray);
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .about-img {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .about-img img {
+      width: 100%;
+      display: block;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-text h3 {
+      font-size: 24px;
+      color: var(--amazon-dark);
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      color: var(--text-gray);
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+
+    .about-features {
+      margin: 24px 0;
+    }
+
+    .about-features li {
+      margin-bottom: 10px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-features i {
+      color: var(--amazon-orange);
+    }
+
+    /* 服务区域 */
+    .services {
+      background-color: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .service-card {
+      padding: 30px;
+      background-color: var(--white);
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .service-card i {
+      font-size: 36px;
+      color: var(--amazon-orange);
+      margin-bottom: 16px;
+    }
+
+    .service-card h4 {
+      font-size: 18px;
+      color: var(--amazon-dark);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    /* 联系区域 */
+    .contact {
+      background-color: var(--amazon-gray);
+    }
+
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 15px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--amazon-orange);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* 页脚 */
+    footer {
+      background-color: var(--amazon-blue);
+      color: var(--white);
+      padding: 40px 0 20px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-col h4 {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+
+    .footer-col p,
+    .footer-col a {
+      color: #ccc;
+      font-size: 14px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .footer-col a:hover {
+      color: var(--amazon-orange);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .social-links a:hover {
+      background-color: var(--amazon-orange);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    /* 响应式适配 */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .hero-content h1 {
+        font-size: 32px;
+      }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .portfolio-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <i class="fas fa-palette"></i> 电商设计师
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#home">首页</a></li>
+        <li><a href="#portfolio">作品集</a></li>
+        <li><a href="#about">关于我</a></li>
+        <li><a href="#services">设计服务</a></li>
+        <li><a href="#contact">联系我</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 英雄区 -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>专注亚马逊电商视觉设计<br>打造高转化品牌视觉</h1>
+        <p>专注亚马逊主图、A+页面、品牌店铺、Listing页面设计，用专业视觉提升产品点击率与转化率</p>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn">查看作品集</a>
+          <a href="#contact" class="btn btn-outline">立即咨询</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品集 -->
+  <section class="portfolio section" id="portfolio">
+    <div class="container">
+      <h2 class="section-title">设计作品集</h2>
+      <div class="portfolio-grid">
+        <!-- 作品1 -->
+        <div class="portfolio-card">
+          <img src="https://picsum.photos/600/400?random=1" alt="亚马逊主图设计" class="card-img">
+          <div class="card-info">
+            <div class="card-category">亚马逊主图设计</div>
+            <h3 class="card-title">3C数码产品主图系列</h3>
+            <p class="card-desc">专业亚马逊合规主图设计，白底高清、突出产品卖点，提升搜索点击率</p>
+          </div>
+        </div>
+        <!-- 作品2 -->
+        <div class="portfolio-card">
+          <img src="https://picsum.photos/600/400?random=2" alt="A+页面设计" class="card-img">
+          <div class="card-info">
+            <div class="card-category">A+页面设计</div>
+            <h3 class="card-title">家居用品A+详情页</h3>
+            <p class="card-desc">亚马逊品牌A+页面设计，场景化展示，强化产品价值，提高转化率</p>
+          </div>
+        </div>
+        <!-- 作品3 -->
+        <div class="portfolio-card">
+          <img src="https://picsum.photos/600/400?random=3" alt="店铺装修" class="card-img">
+          <div class="card-info">
+            <div class="card-category">品牌店铺装修</div>
+            <h3 class="card-title">亚马逊品牌旗舰店</h3>
+            <p class="card-desc">高端品牌店铺视觉设计，统一视觉风格，提升品牌专业度与用户信任度</p>
+          </div>
+        </div>
+        <!-- 作品4 -->
+        <div class="portfolio-card">
+          <img src="https://picsum.photos/600/400?random=4" alt="产品包装" class="card-img">
+          <div class="card-info">
+            <div class="card-category">产品包装设计</div>
+            <h3 class="card-title">美妆产品包装套装</h3>
+            <p class="card-desc">符合亚马逊合规要求的产品包装设计，提升品牌质感与用户体验</p>
+          </div>
+        </div>
+        <!-- 作品5 -->
+        <div class="portfolio-card">
+          <img src="https://picsum.photos/600/400?random=5" alt="图文设计" class="card-img">
+          <div class="card-info">
+            <div class="card-category">Listing图文设计</div>
+            <h3 class="card-title">户外用品详情排版</h3>
+            <p class="card-desc">清晰排版+卖点可视化，降低阅读成本，全方位展示产品优势</p>
+          </div>
+        </div>
+        <!-- 作品6 -->
+        <div class="portfolio-card">
+          <img src="https://picsum.photos/600/400?random=6" alt="品牌VI" class="card-img">
+          <div class="card-info">
+            <div class="card-category">品牌VI设计</div>
+            <h3 class="card-title">亚马逊品牌视觉体系</h3>
+            <p class="card-desc">完整品牌LOGO、配色、字体体系，打造差异化亚马逊品牌形象</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于我 -->
+  <section class="about section" id="about">
+    <div class="container">
+      <h2 class="section-title">关于设计师</h2>
+      <div class="about-content">
+        <div class="about-img">
+          <img src="https://picsum.photos/600/800?random=10" alt="设计师照片">
+        </div>
+        <div class="about-text">
+          <h3>资深亚马逊电商视觉设计师</h3>
+          <p>5年+专注亚马逊平台设计经验，服务过100+跨境电商品牌，精通亚马逊平台设计规则与用户视觉习惯。</p>
+          <p>擅长主图、A+页面、品牌店铺、产品包装、Listing详情等全链路电商视觉设计，以高转化为设计目标，用视觉提升产品销量。</p>
+          <ul class="about-features">
+            <li><i class="fas fa-check"></i> 熟悉亚马逊所有设计规范与要求</li>
+            <li><i class="fas fa-check"></i> 专注高点击率、高转化视觉设计</li>
+            <li><i class="fas fa-check"></i> 全平台响应式适配设计</li>
+            <li><i class="fas fa-check"></i> 一对一专属设计服务</li>
+            <li><i class="fas fa-check"></i> 提供源文件与商用授权</li>
+          </ul>
+          <a href="#contact" class="btn">预约设计</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 设计服务 -->
+  <section class="services section" id="services">
+    <div class="container">
+      <h2 class="section-title">设计服务</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-image"></i>
+          <h4>亚马逊主图设计</h4>
+          <p>合规白底主图、场景图、卖点图、信息图，提升搜索点击率</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-file-alt"></i>
+          <h4>A+页面设计</h4>
+          <p>品牌A+页面、图文排版、场景展示，提高产品转化率</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-store"></i>
+          <h4>品牌店铺装修</h4>
+          <p>亚马逊品牌旗舰店定制设计，统一品牌视觉形象</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-box"></i>
+          <h4>产品包装设计</h4>
+          <p>合规产品包装、说明书、标签设计，提升品牌质感</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-pen-fancy"></i>
+          <h4>品牌VI设计</h4>
+          <p>LOGO、配色、字体全套视觉体系，打造差异化品牌</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-headset"></i>
+          <h4>一对一设计指导</h4>
+          <p>亚马逊设计规则讲解、视觉优化建议、长期设计合作</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我 -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <h2 class="section-title">联系我</h2>
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="您的姓名" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="您的邮箱" required>
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="您的微信/联系方式" required>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="请描述您的设计需求..." required></textarea>
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">提交需求</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>电商设计师</h4>
+          <p>专注亚马逊高转化视觉设计</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-weixin"></i></a>
+            <a href="#"><i class="fab fa-qq"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速链接</h4>
+          <a href="#home">首页</a>
+          <a href="#portfolio">作品集</a>
+          <a href="#about">关于我</a>
+          <a href="#services">服务项目</a>
+        </div>
+        <div class="footer-col">
+          <h4>设计服务</h4>
+          <a href="#">主图设计</a>
+          <a href="#">A+页面</a>
+          <a href="#">店铺装修</a>
+          <a href="#">品牌VI</a>
+        </div>
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <p><i class="fas fa-envelope"></i> design@example.com</p>
+          <p><i class="fas fa-phone"></i> 138 0000 0000</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 电商设计师作品集 | 亚马逊风格设计
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
